@@ -3,7 +3,7 @@ from flask import Flask, url_for, request, render_template
 app = Flask(__name__)
 
 
-@app.route('//<name>')
+@app.route('/<name>')
 @app.route('/index/<name>')
 def index(name):
     n = name
