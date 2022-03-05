@@ -19,8 +19,13 @@ def ex2(prof):
             t = 'НАУЧНЫЕ СИМУЛЯТОРЫ'
         else:
             t = 'ТРЕНАЖЕРЫ ДЛЯ ОСТАЛЬНЫХ'
-    print(t)
     return render_template('ex2.html', title=t)
+
+
+@app.route('/list_prof/<string:ll>')
+def ex3(ll):
+    print(ll)
+    return render_template('ex3.html', ll=ll)
 
 
 @app.route('/test')
