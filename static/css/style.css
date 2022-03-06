@@ -2,3 +2,12 @@ h4 {
     color: #808080;
     padding: 20px;
 }
+}
+table {
+text-align: center;
+}
+th {
+background: #D8E6F3;
+font-size: 22px;
+font-weight: 300;
+}

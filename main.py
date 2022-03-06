@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, choice
 
 from flask import Flask, url_for, request, render_template
 from werkzeug.utils import redirect
@@ -64,15 +64,24 @@ def ex6():
     return render_template('ex6.html', title='Mars', a=astrs)
 
 
-@app.route('/table/<string:sex>/<int:age>')
+@app.route('/table/<sex>/<age>')
 def ex7(sex, age):
-    c = randint(0, 200)
+    c = randint(17, 150)
     if sex == 'male':
         color = [c, c, 255]
     else:
         color = [255, c, c]
-    print(color)
-    return render_template('ex7.html', title='Mars')
+    f_color = '#' + hex(color[0])[2:] + hex(color[1])[2:] + hex(color[2])[2:]
+    pic_child = 'alien_c1.jpg'
+    pic_parent = 'alien_p1.jpg'
+    if int(age) < 21:
+        pic = pic_child
+    else:
+        pic = pic_parent
+    pic = '/static/img/' + pic
+    print(color, f_color)
+    print(hex(color[0])[2:], hex(color[1])[2:], hex(color[2])[2:])
+    return render_template('ex7.html', title='Mars', color=f_color, pic=pic)
 
 
 @app.route('/test')
