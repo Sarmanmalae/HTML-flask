@@ -29,7 +29,7 @@ def ex2(prof):
 @app.route('/list_prof/<string:ll>')
 def ex3(ll):
     print(ll)
-    return render_template('ex3.html', ll=ll)
+    return render_template('ex3.html', title='Mars', ll=ll)
 
 
 @app.route('/answer')
@@ -45,7 +45,7 @@ def ex4():
         'motivation': 'Всегда мечтал застрять на Марсе!',
         'ready': 'True'
     }
-    return render_template('auto_answer.html', **data)
+    return render_template('auto_answer.html', title='Марс', **data)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -56,9 +56,15 @@ def login():
     return render_template('login.html', title='Аварийный доступ', form=form)
 
 
+@app.route('/distribution')
+def ex6():
+    astrs = ["Ридли Скотт", "Энди Уир", "Марк Уотни", "Венката Капур", "Тэдди Сандерс", "Шон Бин"]
+    return render_template('ex6.html', title='Mars', a=astrs)
+
+
 @app.route('/test')
 def test():
-    return render_template('base.html')
+    return render_template('test.html', title='Mars', list2=["1", "1", "1", "1", "1"])
 
 
 if __name__ == '__main__':
