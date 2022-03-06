@@ -28,9 +28,25 @@ def ex3(ll):
     return render_template('ex3.html', ll=ll)
 
 
+@app.route('/answer')
+@app.route('/auto_answer')
+def ex4():
+    data = {
+        'title': 'info',
+        "surname": "Watney",
+        'name': 'Mark',
+        'education': 'выше среднего',
+        'prof': 'штурман марсохода',
+        'sex': 'male',
+        'motivation': 'Всегда мечтал застрять на Марсе!',
+        'ready': 'True'
+    }
+    return render_template('auto_answer.html', **data)
+
+
 @app.route('/test')
 def test():
-    return render_template('ex2.html', username='Kirill', title='Марс')
+    return render_template('base.html')
 
 
 if __name__ == '__main__':
