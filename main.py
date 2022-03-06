@@ -45,7 +45,7 @@ def ex4():
         'motivation': 'Всегда мечтал застрять на Марсе!',
         'ready': 'True'
     }
-    return render_template('auto_answer.html', title='Марс', **data)
+    return render_template('auto_answer.html', **data)
 
 
 @app.route('/login', methods=['GET', 'POST'])
