@@ -1,3 +1,5 @@
+from random import randint
+
 from flask import Flask, url_for, request, render_template
 from werkzeug.utils import redirect
 
@@ -60,6 +62,17 @@ def login():
 def ex6():
     astrs = ["Ридли Скотт", "Энди Уир", "Марк Уотни", "Венката Капур", "Тэдди Сандерс", "Шон Бин"]
     return render_template('ex6.html', title='Mars', a=astrs)
+
+
+@app.route('/table/<string:sex>/<int:age>')
+def ex7(sex, age):
+    c = randint(0, 200)
+    if sex == 'male':
+        color = [c, c, 255]
+    else:
+        color = [255, c, c]
+    print(color)
+    return render_template('ex7.html', title='Mars')
 
 
 @app.route('/test')
