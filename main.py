@@ -1,3 +1,4 @@
+import os
 from random import randint, choice
 
 from flask import Flask, url_for, request, render_template
@@ -16,6 +17,23 @@ def index(name):
     return render_template('base.html', title=n)
 
 
+@app.route('/load_photo', methods=['POST', 'GET'])
+def sample_file_upload():
+    if request.method == 'GET':
+        n = os.listdir('static/img/carousel')[1:]
+        print()
+        return render_template('new_carousel.html', photos=n)
+    elif request.method == 'POST':
+        t = request.files['file']
+        a = len(os.listdir('static/img/carousel'))
+        name = 'pic' + str(a+1) + '.jpg'
+        with open(f'static/img/carousel/{name}', 'wb') as f:
+            f.write(t.read())
+        print(1)
+        n = os.listdir('static/img/carousel')[1:]
+        return render_template('new_carousel.html', photos=n)
+
+
 @app.route('/training/<string:prof>')
 def ex2(prof):
     for i in [i.lower() for i in prof.split()]:
@@ -30,7 +48,6 @@ def ex2(prof):
 
 @app.route('/list_prof/<string:ll>')
 def ex3(ll):
-    print(ll)
     return render_template('ex3.html', title='Mars', ll=ll)
 
 
