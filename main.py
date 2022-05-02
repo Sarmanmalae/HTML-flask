@@ -1,3 +1,4 @@
+import json
 import os
 from random import randint, choice
 
@@ -26,7 +27,7 @@ def sample_file_upload():
     elif request.method == 'POST':
         t = request.files['file']
         a = len(os.listdir('static/img/carousel'))
-        name = 'pic' + str(a+1) + '.jpg'
+        name = 'pic' + str(a + 1) + '.jpg'
         with open(f'static/img/carousel/{name}', 'wb') as f:
             f.write(t.read())
         print(1)
@@ -81,6 +82,16 @@ def ex6():
     return render_template('ex6.html', title='Mars', a=astrs)
 
 
+@app.route('/members')
+def ex10():
+    with open('templates/team.json', encoding='utf8') as team:
+        data = json.load(team)
+    a = randint(1, len(data))
+    member = data[str(a)]
+    member['specialities'] = ', '.join(member['specialities'])
+    return render_template('members.html', title='Member', member=member)
+
+
 @app.route('/table/<sex>/<age>')
 def ex7(sex, age):
     c = randint(17, 150)
@@ -90,7 +101,7 @@ def ex7(sex, age):
         color = [255, c, c]
     f_color = '#' + hex(color[0])[2:] + hex(color[1])[2:] + hex(color[2])[2:]
     pic_child = 'alien_c1.jpg'
-    pic_parent = 'alien_p1.jpg'
+    pic_parent = 'markw.jpg'
     if int(age) < 21:
         pic = pic_child
     else:

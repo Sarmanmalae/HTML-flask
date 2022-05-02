@@ -1,0 +1,29 @@
+{
+  "1": {
+    "name": "Mark",
+    "surname": "Watney",
+    "photo": "markw.jpg",
+    "specialities": [
+      "астрогеолог",
+      "специалист по радиационной защите"
+    ]
+  },
+  "2": {
+    "name": "Endy",
+    "surname": "Jones",
+    "photo": "endyj.png",
+    "specialities": [
+      "биолог",
+      "специалист по инфекционным заболеваниям"
+    ]
+  },
+  "3": {
+    "name": "Rick",
+    "surname": "Smith",
+    "photo": "ricks.jpg",
+    "specialities": [
+      "физик",
+      "специалист по радиосвязи"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3 align="center">{{ member['name'] }} {{ member['surname'] }}</h3>
+<div align="center">
+    <img width="200" height="300" src="/static/img/{{ member['photo'] }}">
+</div>
+<br>
+<p align="center">{{member['specialities']}}</p>
+{% endblock %}
